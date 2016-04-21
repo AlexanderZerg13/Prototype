@@ -1,20 +1,18 @@
 package ru.infocom_s.propotype;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FragmentMain extends ListFragment {
+import ru.infocom_s.propotype.data.News;
+import ru.infocom_s.propotype.data.NewsLab;
+
+public class FragmentNews extends ListFragment {
     private ArrayList<News> mNews;
 
     @Override

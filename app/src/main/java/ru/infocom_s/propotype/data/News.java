@@ -1,4 +1,4 @@
-package ru.infocom_s.propotype;
+package ru.infocom_s.propotype.data;
 
 import java.util.UUID;
 

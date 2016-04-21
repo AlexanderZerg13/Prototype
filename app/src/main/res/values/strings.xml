@@ -3,10 +3,13 @@
 
     <string name="title_login">Вход</string>
     <string name="title_news">Новости</string>
+    <string name="title_schedule">Расписание</string>
 
     <string name="login">Имя</string>
     <string name="password">Пароль</string>
     <string name="enter">Войти</string>
+
+    <string name="date_picker_title">Выбор даты:</string>
 
     <string name="open_menu">Open</string>
     <string name="close_menu">Close</string>
