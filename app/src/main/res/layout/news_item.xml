@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="7dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--<ImageView-->
+        <!--android:id="@+id/newsImage"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp" />-->
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/newsDescription"
+        android:layout_alignStart="@+id/newsDescription" />
+    <TextView
+        android:id="@+id/newsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="15sp"
+        android:layout_below="@+id/newsTitle" />
+</RelativeLayout>

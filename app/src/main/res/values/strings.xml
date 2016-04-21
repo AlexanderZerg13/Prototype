@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Propotype</string>
+
+    <string name="title_login">Вход</string>
+    <string name="title_news">Новости</string>
+
+    <string name="login">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Войти</string>
+
+    <string name="open_menu">Open</string>
+    <string name="close_menu">Close</string>
+    <string-array name="items">
+        <item>gg</item>
+        <item>gg</item>
+        <item>gg</item>
+    </string-array>
+
+    <string name="error_wrong_login_or_password">Неверное имя пользователя или пароль</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

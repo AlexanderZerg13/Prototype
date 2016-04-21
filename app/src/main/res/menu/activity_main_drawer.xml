@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:title="Новости" />
+        <item
+            android:id="@+id/nav_schedule"
+            android:title="Расписание" />
+        <item
+            android:id="@+id/nav_session"
+            android:title="Сессии" />
+        <item
+            android:id="@+id/nav_progress"
+            android:title="Успеваемость" />
+        <item
+            android:id="@+id/nav_publication"
+            android:title="Публикации" />
+        <item
+            android:id="@+id/nav_campaign"
+            android:title="Приемная кампания" />
+
+    </group>
+
+    <item android:title="Дополнительно">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="Выйти" />
+        </menu>
+    </item>
+
+</menu>
