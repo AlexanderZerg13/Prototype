@@ -13,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Calendar;
+import java.util.Date;
 
-public class FragmentSchedule extends Fragment {
+public class FragmentSchedule extends Fragment implements FragmentLessons.changeViewPagerState {
+
+    private static final int REQUEST_DATE = 0;
+
+    private ViewPager mViewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,12 +32,24 @@ public class FragmentSchedule extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-        ViewPager mViewPager = (ViewPager) v.findViewById(R.id.scheduleViewPager);
+        mViewPager = (ViewPager) v.findViewById(R.id.scheduleViewPager);
         mViewPager.setAdapter(new ScheduleViewPager(getChildFragmentManager()));
 
         Calendar calendar = Calendar.getInstance();
         mViewPager.setCurrentItem((7 + calendar.get(Calendar.DAY_OF_WEEK) - 2) % 7);
         return v;
+    }
+
+    @Override
+    public void setPage(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        Calendar calendar1 = Calendar.getInstance();
+        int add = 0;
+        if (calendar1.get(Calendar.WEEK_OF_MONTH) < calendar.get(Calendar.WEEK_OF_MONTH)) {
+            add++;
+        }
+        mViewPager.setCurrentItem((7 + calendar.get(Calendar.DAY_OF_WEEK) - 2) % 7 + add * 6);
     }
 
     private class ScheduleViewPager extends FragmentPagerAdapter {
@@ -43,7 +60,9 @@ public class FragmentSchedule extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return FragmentLessons.newInstance(position);
+            FragmentLessons fragmentLessons = FragmentLessons.newInstance(position);
+            fragmentLessons.setTargetFragment(FragmentSchedule.this, REQUEST_DATE);
+            return fragmentLessons;
         }
 
         @Override

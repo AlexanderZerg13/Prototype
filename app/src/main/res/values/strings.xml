@@ -10,6 +10,7 @@
     <string name="enter">Войти</string>
 
     <string name="date_picker_title">Выбор даты:</string>
+    <string name="date_lesson_time">Время:</string>
 
     <string name="open_menu">Open</string>
     <string name="close_menu">Close</string>

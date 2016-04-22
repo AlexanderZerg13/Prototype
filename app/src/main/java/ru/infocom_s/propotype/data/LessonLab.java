@@ -27,7 +27,7 @@ public class LessonLab {
 
         Random random = new Random();
         for (int i = 0; i <12; i++) {
-            int k = random.nextInt(4) + 1;
+            int k = random.nextInt(3) + 3;
             int start = random.nextInt(4) + 1;
             for (int j = 0; j < k; j++) {
                 mLessons.add(new Lesson(start + j, uroki[random.nextInt(uroki.length)], aud[random.nextInt(aud.length)], i));

@@ -1,9 +1,13 @@
 package ru.infocom_s.propotype;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -11,7 +15,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +25,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -28,6 +36,8 @@ import ru.infocom_s.propotype.data.LessonLab;
 public class FragmentLessons extends Fragment {
 
     private static final String DIALOG_DATE = "date";
+    private static final String DIALOG_LESSON_INFORMATION = "date";
+    private static final int REQUEST_DATE = 0;
     private static final String KEY_DAY_OF_WEEK = "day_of_week";
 
     private ArrayList<Lesson> mLessons;
@@ -56,7 +66,7 @@ public class FragmentLessons extends Fragment {
         ListView listView = (ListView) v.findViewById(R.id.scheduleListView);
         TextView textView = (TextView) v.findViewById(R.id.scheduleDateTextView);
 
-        Calendar calendar = Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.add(Calendar.WEEK_OF_YEAR, day / 6);
         calendar.set(Calendar.DAY_OF_WEEK, day % 6 + 2);
@@ -69,14 +79,36 @@ public class FragmentLessons extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
+                DatePickerFragment dialog = DatePickerFragment
+                        .newInstance(calendar.getTime());
+                dialog.setTargetFragment(FragmentLessons.this, REQUEST_DATE);
                 dialog.show(fm, DIALOG_DATE);
             }
         });
 
         listView.setAdapter(new LessonAdapter(mLessons));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity()
+                        .getSupportFragmentManager();
+                LessonInformationFragment lessonInformationFragment
+                        = LessonInformationFragment.newInstance();
+                lessonInformationFragment.show(fm, DIALOG_LESSON_INFORMATION);
+            }
+        });
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) return;
+        if (requestCode == REQUEST_DATE) {
+            Date date = (Date) data
+                    .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            ((changeViewPagerState) getTargetFragment()).setPage(date);
+        }
     }
 
     private class LessonAdapter extends ArrayAdapter<Lesson> {
@@ -106,12 +138,89 @@ public class FragmentLessons extends Fragment {
         }
     }
 
+    public interface changeViewPagerState {
+        void setPage(Date date);
+    }
+
     public static class DatePickerFragment extends DialogFragment {
+
+        private static final String EXTRA_DATE =
+                "ru.infocom_s.propotype.extra_date";
+
+        private Date mDate;
+
+        public static DatePickerFragment newInstance(Date date) {
+
+            Bundle args = new Bundle();
+            args.putSerializable(EXTRA_DATE, date);
+
+            DatePickerFragment fragment = new DatePickerFragment();
+            fragment.setArguments(args);
+
+            return fragment;
+        }
+
+        private void sendResult(int resultCode) {
+            if (getTargetFragment() == null)
+                return;
+
+            Intent i = new Intent();
+            i.putExtra(EXTRA_DATE, mDate);
+
+            getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            mDate = (Date) getArguments().getSerializable(EXTRA_DATE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(mDate);
+            int year = calendar.get(Calendar.YEAR);
+            final int month = calendar.get(Calendar.MONTH);
+            final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            View v = getActivity().getLayoutInflater()
+                    .inflate(R.layout.dialog_date, null);
+
+            DatePicker datePicker = (DatePicker) v.findViewById(R.id.dialog_date_datePicker);
+            datePicker.init(year, month, day, new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker view, int yearCh, int monthCh, int dayCh) {
+                    mDate = new GregorianCalendar(yearCh, monthCh, dayCh).getTime();
+
+                    getArguments().putSerializable(EXTRA_DATE, mDate);
+                }
+            });
+
+            return new AlertDialog.Builder(getActivity())
+                    .setView(v)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            sendResult(Activity.RESULT_OK);
+                        }
+                    })
+//                    .setNegativeButton(android.R.string.cancel, null)
+                    .create();
+        }
+    }
+
+    public static class LessonInformationFragment extends DialogFragment {
+
+        public static LessonInformationFragment newInstance() {
+
+            Bundle args = new Bundle();
+
+            LessonInformationFragment fragment = new LessonInformationFragment();
+            fragment.setArguments(args);
+            return fragment;
+        }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             View v = getActivity().getLayoutInflater()
-                    .inflate(R.layout.dialog_date, null);
+                    .inflate(R.layout.dialog_lesson_information, null);
 
             return new AlertDialog.Builder(getActivity())
                     .setView(v)

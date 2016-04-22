@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*">
+    <TableRow
+        android:layout_width="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+        <TextView
+            android:id="@+id/dialog_lesson_name"
+            android:layout_span="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Физическая культура"
+            android:textSize="16sp"
+            android:gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent">
+        <TextView
+            android:text="@string/date_lesson_time"
+            android:layout_gravity="right"
+            android:paddingRight="5dp"
+            />
+        <TextView
+            android:text="11:35 - 13:40"
+            android:paddingLeft="5dp"
+            />
+    </TableRow>
+
+</TableLayout>
