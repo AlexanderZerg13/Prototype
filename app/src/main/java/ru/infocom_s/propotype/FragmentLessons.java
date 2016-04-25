@@ -63,7 +63,7 @@ public class FragmentLessons extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule_oneday, container, false);
-        ListView listView = (ListView) v.findViewById(R.id.scheduleListView);
+        final ListView listView = (ListView) v.findViewById(R.id.scheduleListView);
         TextView textView = (TextView) v.findViewById(R.id.scheduleDateTextView);
 
         final Calendar calendar = Calendar.getInstance();
@@ -90,10 +90,11 @@ public class FragmentLessons extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Lesson lesson = (Lesson) listView.getAdapter().getItem(position);
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
                 LessonInformationFragment lessonInformationFragment
-                        = LessonInformationFragment.newInstance();
+                        = LessonInformationFragment.newInstance(lesson.getId());
                 lessonInformationFragment.show(fm, DIALOG_LESSON_INFORMATION);
             }
         });
@@ -208,9 +209,18 @@ public class FragmentLessons extends Fragment {
 
     public static class LessonInformationFragment extends DialogFragment {
 
-        public static LessonInformationFragment newInstance() {
+        private static final String EXTRA_ID =
+                "ru.infocom_s.propotype.extra_id";
+
+        private static final String[] SCHEDULE_PAIR = {
+                "8:15 - 9:45", "9:55 - 11:25", "11:35 - 13:05",
+                "13:25 - 14:55", "15:05 - 16:35", "16:50 - 18:20",
+                "18:30 - 20:00", "20:10 - 21:40"};
+
+        public static LessonInformationFragment newInstance(UUID id) {
 
             Bundle args = new Bundle();
+            args.putSerializable(EXTRA_ID, id);
 
             LessonInformationFragment fragment = new LessonInformationFragment();
             fragment.setArguments(args);
@@ -222,10 +232,30 @@ public class FragmentLessons extends Fragment {
             View v = getActivity().getLayoutInflater()
                     .inflate(R.layout.dialog_lesson_information, null);
 
+            UUID uuid = (UUID) getArguments().getSerializable(EXTRA_ID);
+            Lesson lesson = LessonLab.get(getActivity()).getLessonById(uuid);
+
+            TextView textViewLessonName = (TextView) v.findViewById(R.id.dialog_lesson_name);
+            TextView textViewLessonDate = (TextView) v.findViewById(R.id.dialog_lesson_date);
+            TextView textViewLessonAudience = (TextView) v.findViewById(R.id.dialog_lesson_cabinet);
+            TextView textViewLessonTeacher = (TextView) v.findViewById(R.id.dialog_lesson_teacher);
+
+            textViewLessonName.setText(lesson.getName());
+            String lessonDateString = SCHEDULE_PAIR[lesson.getNumber() - 1] + " (" + lesson.getNumber() + " пара)";
+            textViewLessonDate.setText(lessonDateString);
+            textViewLessonAudience.setText(lesson.getRoom());
+            textViewLessonTeacher.setText(lesson.getTeacher());
+
+            textViewLessonTeacher.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+
             return new AlertDialog.Builder(getActivity())
                     .setView(v)
                     .setPositiveButton(android.R.string.ok, null)
-                    .setNegativeButton(android.R.string.cancel, null)
                     .create();
         }
     }

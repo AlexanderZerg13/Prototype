@@ -9,18 +9,21 @@ public class Lesson {
     private int mNumber;
     private String mName;
     private String mRoom;
+
+    private String mTeacher;
     private int mDay;
 
     public Lesson() {
         mId = UUID.randomUUID();
     }
 
-    public Lesson(int Number, String Name, String Room, int Day) {
+    public Lesson(int Number, String Name, String Room, String Teacher, int Day) {
         this();
         this.mNumber = Number;
         this.mName = Name;
         this.mRoom = Room;
         this.mDay = Day;
+        this.mTeacher = Teacher;
     }
 
     public UUID getId() {
@@ -61,5 +64,13 @@ public class Lesson {
 
     public void setDate(int Day) {
         this.mDay = Day;
+    }
+
+    public String getTeacher() {
+        return mTeacher;
+    }
+
+    public void setTeacher(String Teacher) {
+        this.mTeacher = Teacher;
     }
 }

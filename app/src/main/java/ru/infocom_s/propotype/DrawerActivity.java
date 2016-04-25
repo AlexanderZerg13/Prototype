@@ -155,6 +155,8 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
                 break;
             case R.id.nav_logout:
                 logOut();
+                ((NavigationView) findViewById(R.id.n_view))
+                        .getMenu().findItem(R.id.nav_news).setChecked(true);;
                 break;
         }
 

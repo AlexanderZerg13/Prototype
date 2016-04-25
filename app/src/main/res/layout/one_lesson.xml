@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="7dp"
+        android:textSize="18sp"
         android:text="2 пара" />
     <TextView
         android:id="@+id/lessonTVName"
@@ -17,11 +18,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingRight="7dp"
+        android:textSize="18sp"
         android:text="Защита информации в банковской системе и в электронном бизнесе" />
     <TextView
         android:id="@+id/lessonTVRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="7dp"
+        android:textSize="18sp"
         android:text="9-402А" />
 </LinearLayout>

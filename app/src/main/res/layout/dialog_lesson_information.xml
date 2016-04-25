@@ -12,21 +12,71 @@
             android:layout_span="2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Физическая культура"
-            android:textSize="16sp"
-            android:gravity="center" />
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent">
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
             android:text="@string/date_lesson_time"
             android:layout_gravity="right"
             android:paddingRight="5dp"
+            android:textSize="17sp"
             />
         <TextView
-            android:text="11:35 - 13:40"
+            android:id="@+id/dialog_lesson_date"
+            android:text="9-402А"
             android:paddingLeft="5dp"
+            android:textSize="17sp"
+            />
+    </TableRow>
+
+    <TableRow
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/date_lesson_audience"
+            android:layout_gravity="right"
+            android:paddingRight="5dp"
+            android:textSize="17sp"
+            />
+        <TextView
+            android:id="@+id/dialog_lesson_cabinet"
+            android:text="11:35 - 13:40 (2 пара)"
+            android:paddingLeft="5dp"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+    </TableRow>
+
+    <TableRow
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/date_lesson_teacher"
+            android:layout_gravity="right"
+            android:paddingRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            />
+        <TextView
+            android:id="@+id/dialog_lesson_teacher"
+            android:textColor="@color/colorPrimary"
+            android:text="Кирилов Сергей Владимирович"
+            android:paddingLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textSize="17sp"
             />
     </TableRow>
 

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -49,6 +50,8 @@ public class FragmentSchedule extends Fragment implements FragmentLessons.change
         if (calendar1.get(Calendar.WEEK_OF_MONTH) < calendar.get(Calendar.WEEK_OF_MONTH)) {
             add++;
         }
+//        Toast.makeText(getActivity(), calendar.get(Calendar.DAY_OF_WEEK) + " " + ((7 + calendar.get(Calendar.DAY_OF_WEEK) - 2) % 7 + add * 6), Toast.LENGTH_SHORT).show();
+
         mViewPager.setCurrentItem((7 + calendar.get(Calendar.DAY_OF_WEEK) - 2) % 7 + add * 6);
     }
 

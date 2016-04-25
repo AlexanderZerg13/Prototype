@@ -3,23 +3,23 @@ package ru.infocom_s.propotype.data;
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.Random;
+import java.util.UUID;
 
 public class LessonLab {
     private static LessonLab sLessonLab;
 
     private Context mAppContext;
     private ArrayList<Lesson> mLessons;
-    private String[] uroki = {"Защита информации в банковской системе и в электронном бизнесе" ,
+    private String[] classes = {"Защита информации в банковской системе и в электронном бизнесе" ,
             "Компьютерная и инженерная графика компьютерных систем",
             "Защита в операционных системах",
             "Физическая культура",
-            "Компьютерные сети"};
-    private String[] aud = {"9-402А", "9-405", "9-310", "9-410"};
+            "Компьютерные сети",
+            "Криптографические методы защиты информации",
+            "Защита программ и данных"};
+    private String[] audiences = {"9-402А", "9-405", "9-310", "9-410"};
+    private String[] teachers = {"Кирилов Сергей Владимирович", "Спичкин Василий Дмитриевич"};
 
     private LessonLab(Context appContext) {
         mAppContext = appContext;
@@ -30,7 +30,11 @@ public class LessonLab {
             int k = random.nextInt(3) + 3;
             int start = random.nextInt(4) + 1;
             for (int j = 0; j < k; j++) {
-                mLessons.add(new Lesson(start + j, uroki[random.nextInt(uroki.length)], aud[random.nextInt(aud.length)], i));
+                mLessons.add(new Lesson(start + j,
+                        classes[random.nextInt(classes.length)],
+                        audiences[random.nextInt(audiences.length)],
+                        teachers[random.nextInt(2)],
+                        i));
             }
         }
     }
@@ -52,5 +56,14 @@ public class LessonLab {
         }
 
         return lessons;
+    }
+
+    public Lesson getLessonById(UUID uuid) {
+        for (Lesson lesson: mLessons) {
+            if (lesson.getId().equals(uuid)) {
+                return lesson;
+            }
+        }
+        return null;
     }
 }
