@@ -123,6 +123,11 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
 //                }
                 break;
             case R.id.nav_session:
+                fragment = new FragmentSession();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment)
+                        .commit();
                 break;
             case R.id.nav_progress:
                 break;

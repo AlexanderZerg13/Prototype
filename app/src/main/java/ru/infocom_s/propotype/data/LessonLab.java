@@ -11,15 +11,7 @@ public class LessonLab {
 
     private Context mAppContext;
     private ArrayList<Lesson> mLessons;
-    private String[] classes = {"Защита информации в банковской системе и в электронном бизнесе" ,
-            "Компьютерная и инженерная графика компьютерных систем",
-            "Защита в операционных системах",
-            "Физическая культура",
-            "Компьютерные сети",
-            "Криптографические методы защиты информации",
-            "Защита программ и данных"};
-    private String[] audiences = {"9-402А", "9-405", "9-310", "9-410"};
-    private String[] teachers = {"Кирилов Сергей Владимирович", "Спичкин Василий Дмитриевич"};
+
 
     private LessonLab(Context appContext) {
         mAppContext = appContext;
@@ -31,9 +23,9 @@ public class LessonLab {
             int start = random.nextInt(4) + 1;
             for (int j = 0; j < k; j++) {
                 mLessons.add(new Lesson(start + j,
-                        classes[random.nextInt(classes.length)],
-                        audiences[random.nextInt(audiences.length)],
-                        teachers[random.nextInt(2)],
+                        StaticData.classes[random.nextInt(StaticData.classes.length)],
+                        StaticData.audiences[random.nextInt(StaticData.audiences.length)],
+                        StaticData.teachers[random.nextInt(2)],
                         i));
             }
         }

@@ -9,7 +9,6 @@ public class Lesson {
     private int mNumber;
     private String mName;
     private String mRoom;
-
     private String mTeacher;
     private int mDay;
 
