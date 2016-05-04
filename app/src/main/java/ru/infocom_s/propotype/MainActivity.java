@@ -1,17 +1,16 @@
 package ru.infocom_s.propotype;
 
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogin {
+import java.util.UUID;
+
+public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogin, FragmentNews.DescriberNews {
 
 
     @Override
@@ -46,5 +45,39 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
 
         TextView tv = (TextView) navigationView.getHeaderView(0).findViewById(R.id.textViewName);
         tv.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(DrawerActivity.KEY_LOGIN, ""));
+    }
+
+    @Override
+    public void login(String login, String password) {
+
+        if (login.equals(LOGIN) && password.equals(PASSWORD)) {
+
+            setDrawerState(true);
+            PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit()
+                    .putString(KEY_LOGIN, login)
+                    .putString(KEY_PASSWORD, password)
+                    .commit();
+
+            ((TextView) findViewById(R.id.textViewName)).setText(login);
+
+            Fragment fragment = new FragmentNews();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit();
+        } else {
+            Toast.makeText(this, R.string.error_wrong_login_or_password, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void showDescribeNews(UUID id) {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = FragmentNewsDescribe.newInstance(id);
+        fm.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack("")
+                .commit();
     }
 }

@@ -22,8 +22,8 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
     public static String KEY_LOGIN = "login";
     public static String KEY_PASSWORD = "password";
 
-    private static String LOGIN = "user";
-    private static String PASSWORD = "123";
+    protected static String LOGIN = "user";
+    protected static String PASSWORD = "123";
 
     protected DrawerLayout mDrawerLayout;
     protected ActionBarDrawerToggle mDrawerToggle;
@@ -71,29 +71,6 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void login(String login, String password) {
-
-        if (login.equals(LOGIN) && password.equals(PASSWORD)) {
-
-            setDrawerState(true);
-            PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .putString(KEY_LOGIN, login)
-                    .putString(KEY_PASSWORD, password)
-                    .commit();
-
-            ((TextView) findViewById(R.id.textViewName)).setText(login);
-
-            Fragment fragment = new FragmentNews();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment)
-                    .commit();
-        } else {
-            Toast.makeText(this, R.string.error_wrong_login_or_password, Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void logOut() {

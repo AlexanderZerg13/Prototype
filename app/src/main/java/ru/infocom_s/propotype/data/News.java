@@ -6,15 +6,21 @@ public class News {
     private UUID mId;
     private String mTitle;
     private String mDescription;
+    private int mImageViewResource;
 
     public News() {
         mId = UUID.randomUUID();
     }
 
-    public News(String title, String description) {
+    public News(String title, String description, int resource) {
         this();
         mTitle = title;
         mDescription = description;
+        mImageViewResource = resource;
+    }
+
+    public UUID getId() {
+        return mId;
     }
 
     public String getTitle() {
@@ -23,6 +29,10 @@ public class News {
 
     public String getDescription() {
         return mDescription;
+    }
+
+    public int getImageViewResource() {
+        return mImageViewResource;
     }
 
     public void setTitle(String title) {

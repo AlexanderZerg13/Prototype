@@ -21,14 +21,8 @@
             android:id="@+id/nav_campaign"
             android:title="Приемная кампания" />
 
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Выйти" />
     </group>
-
-    <item android:title="Дополнительно">
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:title="Выйти" />
-        </menu>
-    </item>
-
 </menu>
