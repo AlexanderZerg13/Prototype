@@ -1,9 +1,7 @@
 package ru.infocom_s.propotype;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,10 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public abstract class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -132,6 +127,11 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
             case R.id.nav_progress:
                 break;
             case R.id.nav_publication:
+                fragment = new FragmentPublication();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment)
+                        .commit();
                 break;
             case R.id.nav_campaign:
                 break;
