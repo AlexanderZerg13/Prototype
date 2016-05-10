@@ -11,6 +11,7 @@ public abstract class StaticData {
             "Компьютерные сети",
             "Криптографические методы защиты информации",
             "Защита программ и данных"};
+    public static String[] typeOfClasses = {"Лекция", "Практическое занятие", "Лабораторная работа"};
     public static String[] audiences = {"9-402А", "9-405", "9-310", "9-410"};
     public static String[] teachers = {"Кирилов Сергей Владимирович", "Спичкин Василий Дмитриевич"};
     public static String[] author = {"Кирилов С.В.", "Спичкин В.Д.", "Сидоров И.И."};

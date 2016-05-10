@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import java.util.UUID;
 
 public class LessonProgressLab {
     private static LessonProgressLab sLessonProgressLab;
@@ -34,10 +35,14 @@ public class LessonProgressLab {
                 if (rat > 0) {
                     rat++;
                 }
-                marks.add(LessonProgress.Mark.createMark(rat, calendar.getTime()));
+                marks.add(LessonProgress.Mark.createMark(rat,
+                        calendar.getTime(),
+                        StaticData.typeOfClasses[random.nextInt(StaticData.typeOfClasses.length)]));
             }
             Collections.sort(marks);
-            mLessonsProgress.add(new LessonProgress(StaticData.classes[i], marks));
+            mLessonsProgress.add(new LessonProgress(StaticData.classes[i],
+                    StaticData.teachers[random.nextInt(StaticData.teachers.length)],
+                    marks));
         }
 
     }
@@ -51,5 +56,14 @@ public class LessonProgressLab {
 
     public ArrayList<LessonProgress> getLessonProgress() {
         return mLessonsProgress;
+    }
+
+    public LessonProgress getLessonProgressById(UUID uuid) {
+        for(LessonProgress lessonProgress : mLessonsProgress) {
+            if (lessonProgress.getId().equals(uuid)) {
+                return lessonProgress;
+            }
+        }
+        return null;
     }
 }

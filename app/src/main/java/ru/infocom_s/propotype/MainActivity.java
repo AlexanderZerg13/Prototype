@@ -1,10 +1,18 @@
 package ru.infocom_s.propotype;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.transition.ChangeBounds;
+import android.transition.ChangeImageTransform;
+import android.transition.ChangeTransform;
+import android.transition.Fade;
+import android.transition.TransitionSet;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
