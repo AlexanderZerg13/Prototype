@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/md_keylines">
+
+        <ImageView
+            android:id="@+id/news_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            android:src="@drawable/n1"/>
+
+        <TextView
+            android:id="@+id/news_card_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/news_card_image"
+            android:layout_marginTop="@dimen/md_keylines"
+            android:ellipsize="end"
+            android:textColor="@color/dark_grey"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="Конкурс на получение стипендии Правительства РФ"/>
+
+        <TextView
+            android:id="@+id/news_card_describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/news_card_text"
+            android:layout_marginTop="@dimen/md_keylines"
+            android:layout_marginRight="@dimen/md_keylines"
+            android:layout_marginBottom="@dimen/md_keylines"
+            android:ellipsize="end"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
+            android:text="Студентов и аспирантов очной формы обучения  приглашают принять участие в конкурсе на получение стипендии Правительства Российской Федерации по приоритетным направлениям модернизации и технологического развития российской экономики." />
+
+    </RelativeLayout>
+
+</ScrollView>
