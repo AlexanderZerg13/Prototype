@@ -6,4 +6,7 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">90dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="md_keylines">16dp</dimen>
+    <dimen name="card_height">304dp</dimen>
+    <dimen name="article_subheading">16sp</dimen>
 </resources>

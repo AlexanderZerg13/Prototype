@@ -2,6 +2,7 @@ package ru.infocom_s.propotype;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,15 +41,15 @@ public class FragmentNewsDescribe extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.news_item, container, false);
+        View v = inflater.inflate(R.layout.item_news_describe, container, false);
 
-        TextView newsTitle = (TextView) v.findViewById(R.id.newsTitle);
-        TextView newsDescription = (TextView) v.findViewById(R.id.newsDescription);
-        ImageView newsImage = (ImageView) v.findViewById(R.id.newsImage);
+        ImageView newsCardImage = (ImageView) v.findViewById(R.id.news_card_image);
+        TextView newsCardText = (TextView) v.findViewById(R.id.news_card_text);
+        TextView newsCardDescribe = (TextView) v.findViewById(R.id.news_card_describe);
 
-        newsTitle.setText(news.getTitle());
-        newsDescription.setText(news.getDescription());
-        newsImage.setImageResource(news.getImageViewResource());
+        newsCardText.setText(news.getTitle());
+        newsCardDescribe.setText(news.getDescription());
+        newsCardImage.setImageResource(news.getImageViewResource());
 
         return v;
     }

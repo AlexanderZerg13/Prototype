@@ -96,7 +96,7 @@ public abstract class DrawerActivity extends AppCompatActivity implements Naviga
 
         switch (id) {
             case R.id.nav_news:
-                fragment = new FragmentNews();
+                fragment = new FragmentCardNews();
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainer, fragment)

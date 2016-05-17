@@ -38,7 +38,7 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
 
         if (fragment == null) {
             if (checkLogin()) {
-                fragment = new FragmentNews();
+                fragment = new FragmentCardNews();
 
                 navigationView.getMenu().findItem(R.id.nav_news).setChecked(true);
             } else {
@@ -69,7 +69,7 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
 
             ((TextView) findViewById(R.id.textViewName)).setText(login);
 
-            Fragment fragment = new FragmentNews();
+            Fragment fragment = new FragmentCardNews();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentContainer, fragment)
