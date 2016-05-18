@@ -71,7 +71,7 @@ public class FragmentLessons extends Fragment {
         calendar.add(Calendar.WEEK_OF_YEAR, day / 6);
         calendar.set(Calendar.DAY_OF_WEEK, day % 6 + 2);
 
-        Locale locale = new Locale("ru","RU");
+        Locale locale = new Locale("ru", "RU");
         SimpleDateFormat sdf = new SimpleDateFormat("cccc, d MMMM", locale);
         textView.setText(sdf.format(calendar.getTime()));
         textView.setOnClickListener(new View.OnClickListener() {

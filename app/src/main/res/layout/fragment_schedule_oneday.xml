@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
-    <TextView
-        android:id="@+id/scheduleDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Понедельник, 18 апреля"/>
-    <ListView
-        android:id="@+id/scheduleListView"
+    android:padding="@dimen/md_keylines">
+
+    <android.support.v7.widget.CardView
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
-    </ListView>
-</LinearLayout>
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/md_keylines">
+            <TextView
+                android:id="@+id/scheduleDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_grey"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+
+                android:text="Понедельник, 18 апреля"
+                android:layout_centerHorizontal="true" />
+            <ListView
+                android:id="@+id/scheduleListView"
+                android:layout_below="@+id/scheduleDateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/md_keylines">
+            </ListView>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>
