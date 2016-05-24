@@ -2,63 +2,65 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/md_keylines"
     android:stretchColumns="*">
     <TableRow
         android:layout_width="match_parent"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+        android:paddingBottom="@dimen/md_keylines">
         <TextView
             android:id="@+id/dialog_lesson_name"
             android:layout_span="2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:layout_height="wrap_content"
             android:text="Физическая культура"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:textStyle="bold"/>
+            android:textColor="@color/dark_grey"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:gravity="center"/>
     </TableRow>
 
     <TableRow
-        android:paddingBottom="5dp"
+        android:paddingBottom="@dimen/md_keylines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="@string/date_lesson_time"
             android:layout_gravity="right"
             android:paddingRight="5dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
             />
         <TextView
             android:id="@+id/dialog_lesson_date"
             android:text="9-402А"
             android:paddingLeft="5dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
             />
     </TableRow>
 
     <TableRow
-        android:paddingBottom="5dp"
+        android:paddingBottom="@dimen/md_keylines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="@string/date_lesson_audience"
             android:layout_gravity="right"
             android:paddingRight="5dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
             />
         <TextView
             android:id="@+id/dialog_lesson_cabinet"
             android:text="11:35 - 13:40 (2 пара)"
             android:paddingLeft="5dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
     </TableRow>
 
     <TableRow
-        android:paddingBottom="5dp"
+        android:paddingBottom="@dimen/md_keylines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -67,7 +69,8 @@
             android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
+            android:textColor="@color/dark_grey"
             />
         <TextView
             android:id="@+id/dialog_lesson_teacher"
@@ -76,7 +79,7 @@
             android:paddingLeft="5dp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/article_subheading"
             />
     </TableRow>
 

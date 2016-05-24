@@ -1,6 +1,9 @@
 package ru.infocom_s.propotype;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -13,6 +16,7 @@ import android.transition.ChangeTransform;
 import android.transition.Fade;
 import android.transition.TransitionSet;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +36,6 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.n_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 
@@ -52,7 +55,8 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
         }
 
         TextView tv = (TextView) navigationView.getHeaderView(0).findViewById(R.id.textViewName);
-        tv.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(DrawerActivity.KEY_LOGIN, ""));
+        //tv.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(DrawerActivity.KEY_LOGIN, ""));
+        tv.setText("Петров Я.Д.");
     }
 
     @Override
@@ -67,7 +71,7 @@ public class MainActivity extends DrawerActivity implements FragmentLogin.DoLogi
                     .putString(KEY_PASSWORD, password)
                     .commit();
 
-            ((TextView) findViewById(R.id.textViewName)).setText(login);
+            //((TextView) findViewById(R.id.textViewName)).setText(login);
 
             Fragment fragment = new FragmentCardNews();
             getSupportFragmentManager()

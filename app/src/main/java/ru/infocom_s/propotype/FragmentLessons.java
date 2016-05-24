@@ -1,17 +1,24 @@
 package ru.infocom_s.propotype;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.transition.ChangeBounds;
+import android.transition.ChangeImageTransform;
+import android.transition.ChangeTransform;
+import android.transition.Fade;
+import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +102,18 @@ public class FragmentLessons extends Fragment {
                         .getSupportFragmentManager();
                 LessonInformationFragment lessonInformationFragment
                         = LessonInformationFragment.newInstance(lesson.getId());
-                lessonInformationFragment.show(fm, DIALOG_LESSON_INFORMATION);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    lessonInformationFragment.setSharedElementEnterTransition(new DetailsTransition());
+                    lessonInformationFragment.setEnterTransition(new Fade());
+
+                    lessonInformationFragment.setSharedElementReturnTransition(new DetailsTransition());
+                }
+
+                fm.beginTransaction()
+                        .replace(R.id.fragmentContainer, lessonInformationFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -207,7 +225,7 @@ public class FragmentLessons extends Fragment {
         }
     }
 
-    public static class LessonInformationFragment extends DialogFragment {
+    public static class LessonInformationFragment extends Fragment {
 
         private static final String EXTRA_ID =
                 "ru.infocom_s.propotype.extra_id";
@@ -228,7 +246,8 @@ public class FragmentLessons extends Fragment {
         }
 
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
             View v = getActivity().getLayoutInflater()
                     .inflate(R.layout.dialog_lesson_information, null);
 
@@ -249,14 +268,21 @@ public class FragmentLessons extends Fragment {
             textViewLessonTeacher.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dismiss();
+
                 }
             });
 
-            return new AlertDialog.Builder(getActivity())
-                    .setView(v)
-                    .setPositiveButton(android.R.string.ok, null)
-                    .create();
+            return v;
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public class DetailsTransition extends TransitionSet {
+        public DetailsTransition() {
+            setOrdering(ORDERING_TOGETHER);
+            addTransition(new ChangeBounds()).
+                    addTransition(new ChangeTransform()).
+                    addTransition(new ChangeImageTransform());
         }
     }
 }

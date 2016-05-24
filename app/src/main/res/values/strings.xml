@@ -7,6 +7,8 @@
 
     <string name="login">Имя</string>
     <string name="password">Пароль</string>
+    <string name="enter_login">Введите имя</string>
+    <string name="enter_password">Введите пароль</string>
     <string name="enter">Войти</string>
 
     <string name="date_picker_title">Выбор даты:</string>

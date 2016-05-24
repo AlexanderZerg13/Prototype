@@ -1,6 +1,7 @@
 package ru.infocom_s.propotype;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -22,7 +23,6 @@ public class FragmentSession extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getActivity().setTitle("Сессии");
         mSessionLessons = SessionLessonLab.get(getActivity()).getSessionLessons();
         setListAdapter(new SessionLessonAdapter(mSessionLessons));
@@ -42,13 +42,13 @@ public class FragmentSession extends ListFragment {
             }
 
             SessionLesson sessionLesson = getItem(position);
-
+            PreferenceManager.getDefaultSharedPreferences(getActivity());
             TextView sLessonTVName = (TextView) convertView.findViewById(R.id.sLessonTVName);
             TextView sLessonTVDate = (TextView) convertView.findViewById(R.id.sLessonTVDate);
             TextView sLessonTVRoom = (TextView) convertView.findViewById(R.id.sLessonTVRoom);
             TextView sLessonTVTeacher = (TextView) convertView.findViewById(R.id.sLessonTVTeacher);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy\nHH.mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy\nHH:mm");
             sLessonTVName.setText(sessionLesson.getName());
             sLessonTVDate.setText(sdf.format(sessionLesson.getDate()));
             sLessonTVRoom.setText(sessionLesson.getRoom());

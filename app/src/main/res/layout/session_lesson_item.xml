@@ -3,8 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="7dp"
-    android:paddingLeft="7dp">
+
+    android:paddingRight="@dimen/md_keylines"
+    android:paddingLeft="@dimen/md_keylines">
     <TextView
         android:id="@+id/sLessonTVName"
         android:layout_width="match_parent"
@@ -12,26 +13,30 @@
         android:textSize="20sp"
         android:text="Защита в операционных системах"
         android:gravity="center_horizontal"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/dark_grey"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
         <TextView
             android:id="@+id/sLessonTVDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="11.05.16 \n11:30"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/article_subheading"
+            android:text="11.05.16 \n 11:30"
             android:paddingRight="7dp"
             android:layout_weight="2" />
         <TextView
             android:id="@+id/sLessonTVTeacher"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/article_subheading"
             android:text="Кирилов Сергей Владимирович"
             android:layout_weight="5"
             android:textColor="@color/colorPrimary"
@@ -41,7 +46,8 @@
             android:id="@+id/sLessonTVRoom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/article_subheading"
             android:text="9-402А"
             android:layout_weight="2"
             android:gravity="right" />

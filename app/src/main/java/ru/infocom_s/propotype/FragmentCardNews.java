@@ -41,7 +41,6 @@ public class FragmentCardNews extends Fragment {
         View v = inflater.inflate(
                 R.layout.recycler_view, container, false);
         NewsAdapter adapter = new NewsAdapter(getActivity());
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_layout);
 
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setAdapter(adapter);
@@ -50,9 +49,9 @@ public class FragmentCardNews extends Fragment {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                int topRowVerticalPosition =
-                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
-                swipeRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+//                int topRowVerticalPosition =
+//                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
+//                swipeRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
 
             }
 
@@ -98,7 +97,7 @@ public class FragmentCardNews extends Fragment {
                     fm.beginTransaction()
                             .addSharedElement(newsCardImage, "image")
                             .replace(R.id.fragmentContainer, fragment)
-                            .addToBackStack("")
+                            .addToBackStack(null)
                             .commit();
                 }
             });

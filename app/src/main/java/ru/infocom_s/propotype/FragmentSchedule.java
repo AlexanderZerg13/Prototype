@@ -1,12 +1,15 @@
 package ru.infocom_s.propotype;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +25,11 @@ public class FragmentSchedule extends Fragment implements FragmentLessons.change
 
     private ViewPager mViewPager;
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setExitTransition(new Fade());
         getActivity().setTitle(R.string.title_schedule);
     }
 

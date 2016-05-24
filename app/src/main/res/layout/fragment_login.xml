@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/md_keylines">
     <TextView
+        android:id="@+id/login_fragment_TVName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/login"
-        android:textSize="30sp"/>
+        android:textSize="25sp"
+        android:textColor="@color/dark_grey"/>
     <EditText
-        android:id="@+id/editTextLogin"
-        android:layout_width="200dp"
+        android:id="@+id/login_fragment_ETLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login"
+        android:layout_below="@id/login_fragment_TVName"
+        android:hint="@string/enter_login"
         android:textSize="20sp"/>
     <TextView
+        android:id="@+id/login_fragment_TVPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/login_fragment_ETLogin"
         android:text="@string/password"
-        android:textSize="30sp"/>
+        android:textSize="25sp"
+        android:textColor="@color/dark_grey"/>
     <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="200dp"
+        android:id="@+id/login_fragment_ETPassword"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/login_fragment_TVPassword"
         android:inputType="textPassword"
-        android:hint="@string/password"
+        android:hint="@string/enter_password"
         android:textSize="20sp"/>
     <Button
-        android:id="@+id/buttonEnter"
-        android:layout_width="200dp"
+        android:id="@+id/login_fragment_BEnter"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/md_keylines"
+        android:layout_below="@id/login_fragment_ETPassword"
+        android:layout_alignParentRight="true"
         android:textSize="16sp"
-        android:text="@string/enter"/>
-</LinearLayout>
+        android:text="@string/enter"
+        android:textColor="@color/colorPrimary"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+</RelativeLayout>

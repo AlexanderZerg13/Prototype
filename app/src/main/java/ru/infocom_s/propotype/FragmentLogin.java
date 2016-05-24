@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class FragmentLogin extends Fragment {
 
@@ -41,9 +40,9 @@ public class FragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
-        editTextLogin = (EditText) v.findViewById(R.id.editTextLogin);
-        editTextPassword = (EditText) v.findViewById(R.id.editTextPassword);
-        buttonEnter = (Button) v.findViewById(R.id.buttonEnter);
+        editTextLogin = (EditText) v.findViewById(R.id.login_fragment_ETLogin);
+        editTextPassword = (EditText) v.findViewById(R.id.login_fragment_ETPassword);
+        buttonEnter = (Button) v.findViewById(R.id.login_fragment_BEnter);
 
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +50,8 @@ public class FragmentLogin extends Fragment {
                 String login, password;
                 login = editTextLogin.getText().toString();
                 password = editTextPassword.getText().toString();
+                editTextLogin.clearFocus();
+                editTextPassword.clearFocus();
 
                 doLoginContext.login(login, password);
             }

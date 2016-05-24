@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="7dp"
-    android:paddingRight="7dp">
+    android:layout_marginLeft="@dimen/md_keylines"
+    android:layout_marginRight="@dimen/md_keylines"
+    android:layout_marginBottom="@dimen/md_keylines"
+    android:orientation="horizontal">
+
     <TextView
         android:id="@+id/pTVId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:paddingRight="7dp"
         android:gravity="left"
-        android:text="1"/>
+        android:paddingRight="7dp"
+        android:text="1"
+        android:textColor="@color/medium_grey"
+        android:textSize="@dimen/article_subheading"/>
+
     <TextView
         android:id="@+id/pTVAuthor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="6"
-        android:textSize="18sp"
         android:paddingRight="7dp"
-        android:text="Иванов И.И. Кирилов С.В."/>
+        android:text="Иванов И.И. Кирилов С.В."
+        android:textColor="@color/dark_grey"
+        android:textSize="@dimen/article_subheading"/>
+
     <TextView
         android:id="@+id/pTVName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:textSize="18sp"
-        android:text="Быстродействующий алгоритм фрактального сжатия изображений"/>
+        android:text="Быстродействующий алгоритм фрактального сжатия изображений"
+        android:textColor="@color/dark_grey"
+        android:textSize="@dimen/article_subheading"/>
 </LinearLayout>
